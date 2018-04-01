@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./resume.css">
 </head>
 <body>
-    <div class="page">
+    <div class="page" id="app">
         <aside class="page__aside">
                 <div class="page__aside--upper">
                         <button>保存</button>
@@ -23,9 +23,15 @@
         <main class="page__main">
             <div class="page__main__resume">
                 <section class="page__main__resume__intro">
-                    <h1>姓名</h1>
+                    <span>
+                        <editable-span v-bind:value="resume.name" v-on:edit="onEdit('name', $event)"></editable-span>
+                    </span>
                     <p>
-                        出生年月 | 应聘职位 | 性别 | 邮箱 
+                            <editable-span v-bind:value="resume.birthday" v-on:edit="onEdit('birthday', $event)"></editable-span>
+                            |
+                            <editable-span v-bind:value="resume.gender" v-on:edit="onEdit('gender', $event)"></editable-span>
+                            |
+                            <editable-span v-bind:value="resume.email" v-on:edit="onEdit('email', $event)"></editable-span>
                     </p>
                 </section>
                 <section class="page__main__resume__skills">
@@ -88,7 +94,12 @@
         </main>
      </div>
 
+    <!-- leanCloud --> 
     <script src="./vendors/av-min.js"></script>
-    <script src="./av.js"></script>
+    <!-- Vue --> 
+    <script src="./vendors/vue.min.js"></script>
+    <script src="./js/av.js"></script>
+    <script src="./js/editable-span.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
