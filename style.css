@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul, ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+@media(min-width: 500px){
+    .page{
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+    }
+}
+.page__aside{
+    border: 1px red solid;
+    width: 120px;
+    padding: 10px;
+    position: relative;
+    flex-shrink: 0;
+}
+.page__aside button{
+    width: 50px;
+    height: 20px;
+    margin: 5px;
+}
+.page__aside--upper{
+    display: flex;
+    flex-direction: column;
+}
+.page__aside--down{
+    position: absolute;
+    bottom: 20px;
+}
+.page__main{
+    border: 1px blue solid;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+}
+.page__main h1{
+    text-align: center;
+    margin-bottom: 16px;
+}
+.page__main__resume{
+}
+.page__main__resume__intro{
+    margin-top: 50px;
+    text-align: center;
+}
+.page__main__resume__skills{
+    margin-top: 50px;
+}
+.page__main__resume__skills ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.page__main__resume__skills ul > li{
+    border: 1px #ddd solid;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 48%;
+}
+.page__main__resume__skills ul > li > h3{
+
+}
+.page__main__resume__projects{
+    margin-top: 50px;
+}
