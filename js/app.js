@@ -3,11 +3,15 @@ let app = new Vue({
     data: {
         loginVisible: false,
         signUpVisible: false,
+        currentUser: {
+            objectId: undefined,
+            email: undefined
+        },
         resume: {
             name: '姓名',
             birthday: '1991年02月',
             gender: '女',
-            email: '13718396548@163.com'
+            email: '13718398888@163.com'
         },
         login: {
             email: '',
@@ -22,12 +26,17 @@ let app = new Vue({
         onEdit(key,value){
             this.resume[key] = value
         },
+        hasLogin(){
+            return !!this.currentUser.objectId
+        },
         onLogin(e){
-            AV.User.logIn(this.login.email, this.login.password).then(function (user) {
-                console.log(user)
-              }, function (error) {
-                 }
-              )
+            AV.User.logIn(this.login.email, this.login.password).then((user) => {
+                user = user.toJSON() 
+                this.currentUser.objectId = user.objectId,
+                this.currentUser.email = user.email
+                this.loginVisible = false
+              }, (error) => {
+              })
         },
         onLogout(e){
             AV.User.logOut()
@@ -43,15 +52,13 @@ let app = new Vue({
             user.setPassword(this.signUp.password)
             // 设置邮箱
             user.setEmail(this.signUp.email)
-            user.signUp().then(function (user) {
-                console.log(user)
-            }, function (error) {
-               }
-            )
+            user.signUp().then((user) => {
+                alert('注册成功，请登录')
+            }, (error) =>{
+            })
         },
         onClickSave(){
             let currentUser = AV.User.current()
-                console.log(currentUser)
             if (currentUser) {
                 this.saveResume()
             }
@@ -61,13 +68,33 @@ let app = new Vue({
         },
         saveResume(){
             //声明类型
-            let {id} = AV.User.current()
+            let {objectId} = AV.User.current().toJSON()
             //第一个参数是 className，第二个参数是 objectId
-            let user = AV.Object.createWithoutData('User', id)
+            let user = AV.Object.createWithoutData('User', objectId)
             //修改属性
             user.set('resume', this.resume)
             //保存在云端
-            user.save()
+            user.save().then(()=>{
+                alert('保存成功')
+            }, ()=>{
+                alert('保存失败')
+            })
+        },
+        //避免刷新丢失已更改 resume，获取 resume
+        getResume(){
+            var query = new AV.Query('User')
+            query.get(this.currentUser.objectId).then((user) => {
+                let resume = user.toJSON().resume
+                console.log(resume)
+                this.resume = resume
+            }, (error) => {
+            })
         },
     }
 })
+
+let currentUser = AV.User.current()
+if(currentUser){
+    app.currentUser = currentUser.toJSON()
+    app.getResume()
+}

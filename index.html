@@ -19,15 +19,16 @@
                         <button>换肤</button>
                 </div>
                 <div class="page__aside--down">
-                        <button v-on:click="onLogout">登出</button>
+                        <button v-on:click="onLogout" v-show="hasLogin()">登出</button>
                 </div>
         </aside>
         <main class="page__main">
             <div class="page__main__resume">
                 <section class="page__main__resume__intro">
-                    <span>
+                    {{currentUser}}
+                    <h1>
                         <editable-span v-bind:value="resume.name" v-on:edit="onEdit('name', $event)"></editable-span>
-                    </span>
+                    </h1>
                     <p>
                             <editable-span v-bind:value="resume.birthday" v-on:edit="onEdit('birthday', $event)"></editable-span>
                             |
@@ -98,7 +99,7 @@
         <div class="app__login" v-show="loginVisible" v-cloak>
             <form class="app__login__form" v-on:submit.prevent="onLogin">
                 <h2>登录</h2>
-                <button v-on:click="loginVisible = false">关闭</button>
+                <button type="button" v-on:click="loginVisible = false">关闭</button>
                 <div class="row">
                     <label>用户名</label>
                     <input type="text" v-model="login.email" autocomplete="off">
@@ -117,7 +118,7 @@
         <div class="app__signUp" v-show="signUpVisible" v-cloak>
             <form class="app__signUp__form" v-on:submit.prevent="onSignUp">
                 <h2>注册</h2>
-                <button v-on:click="signUpVisible = false">关闭</button>
+                <button type="button" v-on:click="signUpVisible = false">关闭</button>
                 <div class="row">
                     <label>用户名</label>
                     <input type="text" v-model="signUp.email" autocomplete="off">
