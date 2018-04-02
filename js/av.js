@@ -6,10 +6,6 @@ AV.init({
   appKey: APP_KEY
 });
 
-
-
-
-
 /*
 var TestObject = AV.Object.extend('TestObject');
 var testObject = new TestObject();

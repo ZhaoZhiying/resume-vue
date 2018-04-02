@@ -19,7 +19,7 @@
                         <button>换肤</button>
                 </div>
                 <div class="page__aside--down">
-                        <button>登出</button>
+                        <button v-on:click="onLogout">登出</button>
                 </div>
         </aside>
         <main class="page__main">
@@ -96,16 +96,16 @@
         </main>
         <!-- 登录 -->
         <div class="app__login" v-show="loginVisible">
-            <form class="app__login__form">
+            <form class="app__login__form" v-on:submit.prevent="onLogin">
                 <h2>登录</h2>
                 <button v-on:click="loginVisible = false">关闭</button>
                 <div class="row">
                     <label>用户名</label>
-                    <input type="text">
+                    <input type="text" v-model="login.email">
                 </div>
                 <div class="row">
                     <label>密码</label>
-                    <input type="password">
+                    <input type="password" v-model="login.password">
                 </div>
                 <div class="actions">
                     <button type="submit">提交</button>
@@ -115,16 +115,16 @@
         </div>
         <!-- 注册 -->
         <div class="app__signUp" v-show="signUpVisible">
-            <form class="app__signUp__form">
+            <form class="app__signUp__form" v-on:submit.prevent="onSignUp">
                 <h2>注册</h2>
                 <button v-on:click="signUpVisible = false">关闭</button>
                 <div class="row">
                     <label>用户名</label>
-                    <input type="text">
+                    <input type="text" v-model="signUp.email">
                 </div>
                 <div class="row">
                     <label>密码</label>
-                    <input type="password">
+                    <input type="password" v-model="signUp.password">
                 </div>
                 <div class="actions">
                     <button type="submit">提交</button>
@@ -139,6 +139,7 @@
     <script src="./vendors/av-min.js"></script>
     <!-- Vue --> 
     <script src="./vendors/vue.min.js"></script>
+
     <script src="./js/av.js"></script>
     <script src="./js/editable-span.js"></script>
     <script src="./js/app.js"></script>
