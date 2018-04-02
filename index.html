@@ -95,17 +95,17 @@
             </div>
         </main>
         <!-- 登录 -->
-        <div class="app__login" v-show="loginVisible">
+        <div class="app__login" v-show="loginVisible" v-cloak>
             <form class="app__login__form" v-on:submit.prevent="onLogin">
                 <h2>登录</h2>
                 <button v-on:click="loginVisible = false">关闭</button>
                 <div class="row">
                     <label>用户名</label>
-                    <input type="text" v-model="login.email">
+                    <input type="text" v-model="login.email" autocomplete="off">
                 </div>
                 <div class="row">
                     <label>密码</label>
-                    <input type="password" v-model="login.password">
+                    <input type="password" v-model="login.password"  autocomplete="off">
                 </div>
                 <div class="actions">
                     <button type="submit">提交</button>
@@ -114,17 +114,17 @@
             </form>
         </div>
         <!-- 注册 -->
-        <div class="app__signUp" v-show="signUpVisible">
+        <div class="app__signUp" v-show="signUpVisible" v-cloak>
             <form class="app__signUp__form" v-on:submit.prevent="onSignUp">
                 <h2>注册</h2>
                 <button v-on:click="signUpVisible = false">关闭</button>
                 <div class="row">
                     <label>用户名</label>
-                    <input type="text" v-model="signUp.email">
+                    <input type="text" v-model="signUp.email" autocomplete="off">
                 </div>
                 <div class="row">
                     <label>密码</label>
-                    <input type="password" v-model="signUp.password">
+                    <input type="password" v-model="signUp.password" autocomplete="off">
                 </div>
                 <div class="actions">
                     <button type="submit">提交</button>

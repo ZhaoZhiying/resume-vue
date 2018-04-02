@@ -14,6 +14,9 @@ input{
     text-align: center;
     font: inherit;
 }
+div[v-cloak]{
+    display: none;
+}
 @media(min-width: 500px){
     .page{
         height: 100vh;
