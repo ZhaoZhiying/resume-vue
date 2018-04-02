@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./resume.css">
+    <link rel="stylesheet" href="./css/resume.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/signUp.css">
 </head>
 <body>
     <div class="page" id="app">
         <aside class="page__aside">
                 <div class="page__aside--upper">
-                        <button>保存</button>
+                        <button v-on:click="onClickSave">保存</button>
                         <button>分享</button>
                         <button>打印</button>
                         <button>换肤</button>
@@ -92,6 +94,45 @@
                 </section>
             </div>
         </main>
+        <!-- 登录 -->
+        <div class="app__login" v-show="loginVisible">
+            <form class="app__login__form">
+                <h2>登录</h2>
+                <button v-on:click="loginVisible = false">关闭</button>
+                <div class="row">
+                    <label>用户名</label>
+                    <input type="text">
+                </div>
+                <div class="row">
+                    <label>密码</label>
+                    <input type="password">
+                </div>
+                <div class="actions">
+                    <button type="submit">提交</button>
+                    <a href="#" v-on:click="loginVisible = false; signUpVisible = true">注册</a>
+                </div>
+            </form>
+        </div>
+        <!-- 注册 -->
+        <div class="app__signUp" v-show="signUpVisible">
+            <form class="app__signUp__form">
+                <h2>注册</h2>
+                <button v-on:click="signUpVisible = false">关闭</button>
+                <div class="row">
+                    <label>用户名</label>
+                    <input type="text">
+                </div>
+                <div class="row">
+                    <label>密码</label>
+                    <input type="password">
+                </div>
+                <div class="actions">
+                    <button type="submit">提交</button>
+                    <a href="#" v-on:click="loginVisible = true; signUpVisible = false">登录</a>
+                </div>
+            </form>
+        </div>
+
      </div>
 
     <!-- leanCloud --> 

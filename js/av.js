@@ -1,9 +1,21 @@
-//初始化代码
-var APP_ID = '0mKg6fXQaQ7kihFoUFm5i76F-gzGzoHsz';
-var APP_KEY = 'iKWt6xdjft5RTNRQyd0jPw8T';
+var APP_ID = 'CmRdPaSGWLd4dxpu9GSk0X7Y-gzGzoHsz';
+var APP_KEY = 'vhMnwrKIdVmnhNSlgdewl0IN';
+
 AV.init({
-    appId: APP_ID,
-    appKey: APP_KEY,
-    // 启用美国节点
-    region: 'us'
+  appId: APP_ID,
+  appKey: APP_KEY
 });
+
+
+
+
+
+/*
+var TestObject = AV.Object.extend('TestObject');
+var testObject = new TestObject();
+testObject.save({
+  words: 'Hello World!'
+}).then(function(object) {
+  alert('LeanCloud Rocks!');
+})
+*/

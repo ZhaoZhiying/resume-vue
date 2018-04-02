@@ -1,6 +1,8 @@
-var app = new Vue({
+let app = new Vue({
     el: '#app',
     data: {
+        loginVisible: false,
+        signUpVisible: false,
         resume: {
             name: '姓名',
             birthday: '1991年02月',
@@ -11,6 +13,18 @@ var app = new Vue({
     methods: {
         onEdit(key,value){
             this.resume[key] = value
-        }
+        },
+        onClickSave(){
+            var currentUser = AV.User.current()
+            if (currentUser) {
+                this.saveResume()
+            }
+            else {
+                this.loginVisible = true;
+            }
+        },
+        saveResume(){
+
+        },
     }
 })
