@@ -13,10 +13,16 @@ let app = new Vue({
             gender: '女',
             email: '13718398888@163.com',
             skills: [
-                {name: '项目名称', description: '项目介绍'},
-                {name: '项目名称', description: '项目介绍'},
-                {name: '项目名称', description: '项目介绍'},
-                {name: '项目名称', description: '项目介绍'}
+                {name: '技能名称', description: '技能介绍'},
+                {name: '技能名称', description: '技能介绍'},
+                {name: '技能名称', description: '技能介绍'},
+                {name: '技能名称', description: '技能介绍'}
+            ],
+            projects: [
+                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
+                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
+                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
+                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'}
             ],
         },
         login: {
@@ -56,6 +62,12 @@ let app = new Vue({
         },
         removeSkill(index){
             this.resume.skills.splice(index, 1)
+        },
+        addProject(){
+            this.resume.projects.push({name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'})
+        },
+        removeProject(index){
+            this.resume.projects.splice(index, 1)
         },
         hasLogin(){
             return !!this.currentUser.objectId

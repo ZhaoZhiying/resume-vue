@@ -74,5 +74,11 @@ div[v-cloak]{
     width: 48%;
 }
 .page__main__resume__projects{
-    margin-top: 50px;
+    margin: 50px 0;
+}
+.page__main__resume__projects ol > li{
+    border: 1px #ddd solid;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
 }

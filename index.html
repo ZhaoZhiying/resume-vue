@@ -25,7 +25,6 @@
         <main class="page__main">
             <div class="page__main__resume">
                 <section class="page__main__resume__intro">
-                        {{resume}}
                     <h1>
                         <editable-span v-bind:value="resume.name" v-on:edit="onEdit('name', $event)"></editable-span>
                     </h1>
@@ -55,35 +54,23 @@
                 <section class="page__main__resume__projects">
                     <h1>项目经验</h1>
                     <ol>
-                        <li>
-                            <h3>我的简历</h3>
-                            <span class="link">http://xxxx/xxx</span>
-                            <span class="keywords">CSS3、jQuery、响应式</span>
-                            <p class="description">我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                        <li v-for="project,index in resume.projects">
+                            <h3 class="name">
+                                <editable-span v-bind:value="project.name" v-on:edit="onEdit(`projects[${index}].name`, $event)"></editable-span>
+                            </h3>
+                            <span class="link">
+                                <editable-span v-bind:value="project.link" v-on:edit="onEdit(`projects[${index}].link`, $event)"></editable-span>
+                            </span>
+                            <span class="keywords">
+                                    <editable-span v-bind:value="project.keywords" v-on:edit="onEdit(`projects[${index}].keywords`, $event)"></editable-span>
+                            </span>
+                            <p class="description">
+                                    <editable-span v-bind:value="project.description" v-on:edit="onEdit(`projects[${index}].description`, $event)"></editable-span>
+                            </p>
+                            <span v-if="index>=4" v-on:click="removeProject(index)">删除</span>
                         </li>
                         <li>
-                            <h3>我的简历</h3>
-                            <span class="link">http://xxxx/xxx</span>
-                            <span class="keywords">CSS3、jQuery、响应式</span>
-                            <p class="description">我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
-                        </li>
-                        <li>
-                            <h3>我的简历</h3>
-                            <span class="link">http://xxxx/xxx</span>
-                            <span class="keywords">CSS3、jQuery、响应式</span>
-                            <p class="description">我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
-                        </li>
-                        <li>
-                            <h3>我的简历</h3>
-                            <span class="link">http://xxxx/xxx</span>
-                            <span class="keywords">CSS3、jQuery、响应式</span>
-                            <p class="description">我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
-                        </li>
-                        <li>
-                            <h3>我的简历</h3>
-                            <span class="link">http://xxxx/xxx</span>
-                            <span class="keywords">CSS3、jQuery、响应式</span>
-                            <p class="description">我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                            <span v-on:click="addProject">添加</span>
                         </li>
                     </ol>
                 </section>
