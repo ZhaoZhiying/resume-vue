@@ -1,6 +1,6 @@
 //组件
 Vue.component('editable-span', {
-    props: ['value'],
+    props: ['value', 'disabled'],// 
     template: `
         <span>
             <span v-show="!editing">{{value}}</span>

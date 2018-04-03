@@ -11,7 +11,13 @@ let app = new Vue({
             name: '姓名',
             birthday: '1991年02月',
             gender: '女',
-            email: '13718398888@163.com'
+            email: '13718398888@163.com',
+            skills: [
+                {name: '项目名称', description: '项目介绍'},
+                {name: '项目名称', description: '项目介绍'},
+                {name: '项目名称', description: '项目介绍'},
+                {name: '项目名称', description: '项目介绍'}
+            ],
         },
         login: {
             email: '',
@@ -24,7 +30,28 @@ let app = new Vue({
     },
     methods: {
         onEdit(key,value){
-            this.resume[key] = value
+            //正则
+            let regex = /\[(\d+)\]/g
+            key = key.replace(regex, (match, number)=>`.${number}`)
+            //key = skills.0.name
+            keys = key.split('.')
+            console.log(keys)
+            console.log(value)
+            let result = this.resume
+            for(let i=0; i<keys.length; i++){
+                if(i === keys.length - 1){
+                    result[keys[i]] = value
+                }else{
+                    result = result[keys[i]]
+                }
+                //result = this.resume
+                //keys = ['skills', '0', 'name']
+                //i=0 result === result['skills'] === this.resume.skills
+                //i=1 result === result[0] === this.resume.skills.0
+                //i=2 result === result['name'] === this.resume.skills.0.name
+                //result === this.resume['skills'][0]['name']
+            }
+            //this.resume['skills'][0]['name'] = value
         },
         hasLogin(){
             return !!this.currentUser.objectId
@@ -85,8 +112,8 @@ let app = new Vue({
             var query = new AV.Query('User')
             query.get(this.currentUser.objectId).then((user) => {
                 let resume = user.toJSON().resume
-                console.log(resume)
-                this.resume = resume
+                //this.resume = resume
+                Object.assign(this.resume, resume)
             }, (error) => {
             })
         },

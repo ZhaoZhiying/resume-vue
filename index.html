@@ -25,7 +25,7 @@
         <main class="page__main">
             <div class="page__main__resume">
                 <section class="page__main__resume__intro">
-                    {{currentUser}}
+                        {{resume}}
                     <h1>
                         <editable-span v-bind:value="resume.name" v-on:edit="onEdit('name', $event)"></editable-span>
                     </h1>
@@ -40,21 +40,11 @@
                 <section class="page__main__resume__skills">
                     <h1>技能</h1>
                     <ul>
-                        <li>
-                            <span class="">静态页面制作</span>
-                            <div class="">完美还原设计稿</div>
-                        </li>
-                        <li>
-                            <span class="">静态页面制作</span>
-                            <div class="">完美还原设计稿</div>
-                        </li>
-                        <li>
-                            <span class="">静态页面制作</span>
-                            <div class="">完美还原设计稿</div>
-                        </li>
-                        <li>
-                            <span class="">静态页面制作</span>
-                            <div class="">完美还原设计稿</div>
+                        <li v-for="skill,index in resume.skills">
+                            <editable-span class="name" v-bind:value="skill.name" v-on:edit="onEdit(`skills[${index}].name`, $event)"></editable-span>
+                            <div class="description">
+                                <editable-span v-bind:value="skill.description" v-on:edit="onEdit(`skills[${index}].description`, $event)"></editable-span>
+                            </div>
                         </li>
                     </ul>
                 </section>
