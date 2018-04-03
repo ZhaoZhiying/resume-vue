@@ -45,6 +45,10 @@
                             <div class="description">
                                 <editable-span v-bind:value="skill.description" v-on:edit="onEdit(`skills[${index}].description`, $event)"></editable-span>
                             </div>
+                            <span v-if="index>=4" v-on:click="removeSkill(index)">删除</span>
+                        </li>
+                        <li>
+                            <span v-on:click="addSkill">添加</span>
                         </li>
                     </ul>
                 </section>

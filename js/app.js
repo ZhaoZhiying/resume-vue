@@ -35,8 +35,6 @@ let app = new Vue({
             key = key.replace(regex, (match, number)=>`.${number}`)
             //key = skills.0.name
             keys = key.split('.')
-            console.log(keys)
-            console.log(value)
             let result = this.resume
             for(let i=0; i<keys.length; i++){
                 if(i === keys.length - 1){
@@ -52,6 +50,12 @@ let app = new Vue({
                 //result === this.resume['skills'][0]['name']
             }
             //this.resume['skills'][0]['name'] = value
+        },
+        addSkill(){
+            this.resume.skills.push({name: '项目名称', description: '项目介绍'})
+        },
+        removeSkill(index){
+            this.resume.skills.splice(index, 1)
         },
         hasLogin(){
             return !!this.currentUser.objectId
