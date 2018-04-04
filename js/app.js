@@ -4,6 +4,7 @@ let app = new Vue({
         loginVisible: false,
         signUpVisible: false,
         shareVisible: false,
+        skinPikerVisible: false,
         previewUser: {
             objectId: undefined,
         },
@@ -59,7 +60,7 @@ let app = new Vue({
         shareLink: {
 
         },
-        mode: 'preview' // 'edit'
+        mode: 'edit', // 'preview'
     },
     //区分预览和编辑模式
     computed: {
@@ -174,6 +175,9 @@ let app = new Vue({
         },
         print(){
             window.print()
+        },
+        setTheme(name){
+            document.body.className = name 
         },
     }
 })
