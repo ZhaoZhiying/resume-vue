@@ -82,3 +82,9 @@ div[v-cloak]{
     margin-bottom: 10px;
     width: 100%;
 }
+
+.page__preview, .page__edit{
+    position: fixed;
+    left: 40px;
+    top: 20px;
+}
