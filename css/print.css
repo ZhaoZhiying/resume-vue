@@ -1,0 +1,14 @@
+.page__aside{
+    display: none;
+}
+.page__main__resume__skills .remove,
+.page__main__resume__skills .add{
+    display: none;
+}
+.page__main__resume__projects .remove,
+.page__main__resume__projects .add{
+    display: none;
+}
+.page__preview{
+    display: none;
+}
