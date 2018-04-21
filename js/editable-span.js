@@ -1,10 +1,10 @@
 //组件
 Vue.component('editable-span', {
-    props: ['value', 'disabled'],// 
+    props: ['value', 'disabled'],
     template: `
         <span class="editableSpan">
             <span v-show="!editing">{{value}}</span>
-            <input v-show="editing" type="text" v-bind:value="value" v-on:input="triggerEdit">
+            <textarea cols="5" v-show="editing" type="text" v-bind:value="value" v-on:input="triggerEdit" style="resize: none; width: 100%"></textarea>
             <button v-if="!disabled" v-on:click="editing = !editing">edit</button>
         </span>
     `,

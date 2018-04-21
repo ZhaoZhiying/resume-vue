@@ -1,0 +1,59 @@
+.page__main{
+    background: #fff;
+    flex-grow: 1;
+    overflow: auto;
+    padding: 50px 200px;
+}
+.page__main-headline{
+    text-align: left
+}
+.page__main-content{
+    display: flex;
+    margin-top: 50px;
+}
+/* content-left */
+.page__main-content-left{
+    width: 30%;
+    margin-right: 30px;
+}
+.page__main-content-left .contact,
+.page__main-content-left .intro,
+.page__main-content-left .skills{
+    display: flex;
+    flex-direction: column;
+}
+.page__main-content-left .contact  > ul > li,
+.page__main-content-left .intro > ul > li,
+.page__main-content-left .skills > ul > li{
+    border: 1px #ddd solid;
+    margin: 10px 0;
+    display: flex;
+}
+.page__main-content-left .skills > ul > li > .level{
+    margin-left: 40px;
+}
+/* content-right */
+.page__main-content-right{
+    flex-grow: 1;
+    display: flex;
+}
+.page__main-content-right hr{
+    border: none;
+    border-left: 1px #999 dashed;
+    height: 100%;
+    padding-right: 30px;
+}
+.page__main-content-right__content{
+    flex-grow: 1;
+}
+.page__main-content-right .assessments,
+.page__main-content-right .works,
+.page__main-content-right .projects{
+}
+.page__main-content-right .assessments > ol > li,
+.page__main-content-right .works > ol > li,
+.page__main-content-right .projects > ol > li{
+    border: 1px #ddd solid;
+    margin-bottom: 10px;
+    
+}

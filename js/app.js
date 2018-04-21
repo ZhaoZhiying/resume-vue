@@ -8,46 +8,42 @@ let app = new Vue({
         previewUser: {
             objectId: undefined,
         },
+        previewResume: {},
         currentUser: {
             objectId: undefined,
             email: undefined
         },
-        //预览用户
-        previewResume: {
-            name: '姓名',
-            birthday: '1991年02月',
-            gender: '女',
-            email: '13718398888@163.com',
-            skills: [
-                {name: '技能名称', description: '技能介绍'},
-                {name: '技能名称', description: '技能介绍'},
-                {name: '技能名称', description: '技能介绍'},
-                {name: '技能名称', description: '技能介绍'}
-            ],
-            projects: [
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'}
-            ],
-        },
         resume: {
             name: '姓名',
-            birthday: '1991年02月',
-            gender: '女',
-            email: '13718398888@163.com',
+            job: '应聘职位',
+            phone: '手机号',
+            email: '邮箱',
+            birthday: '出生年月',
+            gender: '性别',
+            birthplace: '籍贯',
+            education: '学历',
+            graduate: '毕业院校',
             skills: [
-                {name: '技能名称', description: '技能介绍'},
-                {name: '技能名称', description: '技能介绍'},
-                {name: '技能名称', description: '技能介绍'},
-                {name: '技能名称', description: '技能介绍'}
+                {name: '技能名称', level: '等级'},
+                {name: '技能名称', level: '等级'},
+                {name: '技能名称', level: '等级'},
+                {name: '技能名称', level: '等级'}
+            ],
+            assessments: [
+                {description: '描述内容'},
+                {description: '描述内容'},
+                {description: '描述内容'},
+                {description: '描述内容'}
+            ],
+            works: [
+                {company: '公司名称', job: '职位', length: '工作年限', description: '工作内容'},
+                {company: '公司名称', job: '职位', length: '工作年限', description: '工作内容'}
             ],
             projects: [
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'},
-                {name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'}
+                {name: '项目名称', link: 'http://...', company: '所属公司名称', length: '项目周期', description: '项目介绍'},
+                {name: '项目名称', link: 'http://...', company: '所属公司名称', length: '项目周期', description: '项目介绍'}
             ],
+            
         },
         login: {
             email: '',
@@ -57,9 +53,7 @@ let app = new Vue({
             email: '',
             password: ''
         },
-        shareLink: {
-
-        },
+        shareLink: '',
         mode: 'edit', // 'preview'
     },
     //区分预览和编辑模式
@@ -68,7 +62,7 @@ let app = new Vue({
             return this.mode === 'preview' ? this.previewResume : this.resume
         }
     },
-    // currentUser 有变化就 getResume
+    //currentUser 有变化就 getResume
     watch: {
         'currentUser.objectId': function(newValue, oldValue){
             if(newValue){
@@ -105,6 +99,8 @@ let app = new Vue({
             user.setEmail(this.signUp.email)
             user.signUp().then((user) => {
                 alert('注册成功，请登录')
+                this.loginVisible = true;
+                this.signUpVisible = false
             }, (error) =>{
             })
         },
@@ -114,7 +110,7 @@ let app = new Vue({
                 this.saveResume()
             }
             else {
-                this.loginVisible = true;
+                this.loginVisible = true
             }
         },
         saveResume(){
@@ -153,22 +149,28 @@ let app = new Vue({
                 }else{
                     result = result[keys[i]]
                 }
-                //result = this.resume
-                //keys = ['skills', '0', 'name']
-                //i=0 result === result['skills'] === this.resume.skills
-                //i=1 result === result[0] === this.resume.skills.0
-                //i=2 result === result['name'] === this.resume.skills.0.name
-                //result === this.resume['skills'][0]['name']
             }
         },
         addSkill(){
-            this.resume.skills.push({name: '项目名称', description: '项目介绍'})
+            this.resume.skills.push({name: '项目名称', level: '等级'})
         },
         removeSkill(index){
             this.resume.skills.splice(index, 1)
         },
+        addAssessment(){
+            this.resume.assessments.push({description: '描述内容'})
+        },
+        removeAssessment(index){
+            this.resume.assessments.splice(index, 1)
+        },
+        addWork(){
+            this.resume.works.push({company: '公司名称', job: '职位', length: '工作年限', description: '工作内容'})
+        },
+        removeWork(index){
+            this.resume.works.splice(index, 1)
+        },
         addProject(){
-            this.resume.projects.push({name: '项目名称', link: 'http://...', keywords: '关键词', description: '项目介绍'})
+            this.resume.projects.push({name: '项目名称', link: 'http://...', company: '所属公司名称', length: '项目周期', description: '项目介绍'})
         },
         removeProject(index){
             this.resume.projects.splice(index, 1)
@@ -200,7 +202,6 @@ let matches = search.match(regex)
 let userId
 if(matches){
     userId = matches[1] 
-    console.log('preview id:' + userId)
     //预览模式
     app.mode = 'preview'
     app.getResume({objectId: userId}).then(resume => {
