@@ -1,15 +1,42 @@
 .page__main{
     background: #fff;
     flex-grow: 1;
-    overflow: auto;
+    box-shadow: 0 2px 5px 2px rgba(53, 61, 63, 0.3);
     padding: 50px 200px;
+    margin: 0 auto;
 }
+.page__main input,
+.page__main textarea{
+    border: 1px #ddd solid;
+}
+.page__main ol > li{
+    color: #333;
+    font-size: 12px;
+}
+.page__main h3{
+    color: #333;
+    font-size: 16px;
+    padding: 5px 0;
+}
+/* headline */
 .page__main-headline{
-    text-align: left
+    text-align: left;
+}
+.page__main-headline h1{
+    font-size: 30px;
+    color: #333;
+}
+.page__main-headline h1 input{
+    width: 200px;
+}
+.page__main-headline p{
+    font-size: 14px;
+    color: #555;
 }
 .page__main-content{
     display: flex;
-    margin-top: 50px;
+    margin-top: 30px;
+    width: 100%;
 }
 /* content-left */
 .page__main-content-left{
@@ -22,38 +49,124 @@
     display: flex;
     flex-direction: column;
 }
-.page__main-content-left .contact  > ul > li,
-.page__main-content-left .intro > ul > li,
-.page__main-content-left .skills > ul > li{
-    border: 1px #ddd solid;
-    margin: 10px 0;
+.page__main-content-left .contact,
+.page__main-content-left .intro{
+    margin-bottom: 20px;
+}
+.page__main-content-left .contact  > ol,
+.page__main-content-left .intro > ol,
+.page__main-content-left .skills > ol{
+    margin-top: 5px;
+}
+.page__main-content-left .contact  > ol > li,
+.page__main-content-left .intro > ol > li,
+.page__main-content-left .skills > ol > li{
+    margin-top: 15px;
     display: flex;
 }
-.page__main-content-left .skills > ul > li > .level{
-    margin-left: 40px;
+/* skills */
+.page__main-content-left .skills > ol > li{
+    position: relative;
+}
+.page__main-content-left .skills > ol > li > .level{
+   position: absolute;
+   right: 0;
+}
+.page__main-content-left .skills > ol > li > .skill input{
+    width: 110px;
+}
+.page__main-content-left .skills > ol > li > .level input{
+    width: 40px;
+}
+/* 添加删除按钮 */
+.page__main-content-left ol > li{
+    position: relative;
+} 
+.page__main-content-left ol > li .remove{
+    position: absolute;
+    left: -20px;
+}
+.page__main-content-left ol > li .remove img{
+    width: 13px;
+    margin-bottom: -2px;
+}
+.page__main-content-left ol > li .add{
+    display: flex;
+    align-items: center;
+}
+.page__main-content-left ol > li .add img{
+    width: 13px;
+    margin-right: 4px
 }
 /* content-right */
 .page__main-content-right{
-    flex-grow: 1;
+    width: 100%;
     display: flex;
 }
-.page__main-content-right hr{
+.page__main-content-right > hr{
     border: none;
     border-left: 1px #999 dashed;
-    height: 100%;
     padding-right: 30px;
 }
 .page__main-content-right__content{
-    flex-grow: 1;
+    width: 100%;
 }
 .page__main-content-right .assessments,
-.page__main-content-right .works,
-.page__main-content-right .projects{
+.page__main-content-right .works{
+    margin-bottom: 20px;
 }
-.page__main-content-right .assessments > ol > li,
+.page__main-content-right .assessments > ol,
+.page__main-content-right .works > ol,
+.page__main-content-right .projects > ol{
+    margin-top: 20px;
+}
+.page__main-content-right .assessments > ol > li{
+    margin-top: 10px;
+}
 .page__main-content-right .works > ol > li,
 .page__main-content-right .projects > ol > li{
-    border: 1px #ddd solid;
-    margin-bottom: 10px;
-    
+    margin-top: 15px;
+}
+.page__main-content-right .works > ol > li > h5,
+.page__main-content-right .projects > ol > li > h5{
+    font-size: 14px;
+}
+.page__main-content-right .works > ol > li > .additional,
+.page__main-content-right .projects > ol > li > .additional{
+    margin-top: 4px;
+    color: #666;
+}
+.page__main-content-right .works > ol > li > p,
+.page__main-content-right .projects > ol > li > p{
+    margin-top: 6px;
+}
+.page__main-content-right .works > ol > li input,
+.page__main-content-right .projects > ol > li input{
+    width: 200px;
+}
+.page__main-content-left hr,
+.page__main-content-right__content hr{
+    border: none;
+    border-top: 1px #999 dashed;
+}
+/* 添加删除按钮 */
+.page__main-content-right ol > li{
+    position: relative;
+}
+.page__main-content-right ol > li .remove{
+    position: absolute;
+    top: 0;
+    left: -20px;
+}
+.page__main-content-right .remove img{
+    width: 13px;
+    margin-bottom: -2px;
+}
+.page__main-content-right .add{
+    display: flex;
+    align-items: center;
+}
+.page__main-content-right .add img{
+    width: 13px;
+    margin-right: 4px;
 }

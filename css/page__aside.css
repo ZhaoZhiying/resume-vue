@@ -1,25 +1,56 @@
 .page__aside{
-    border: 1px red solid;
-    width: 120px;
-    padding: 10px;
-    position: relative;
-    flex-shrink: 0;
-}
-.page__aside button{
     width: 50px;
-    height: 20px;
-    margin: 5px;
+    flex-shrink: 0;
+    margin-right: 30px;
+    position: relative;
 }
-.page__aside--upper{
+.page__aside__content{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.page__aside__content .buttons{
     display: flex;
     flex-direction: column;
 }
-.page__aside--down{
-    position: absolute;
-    bottom: 20px;
+.page__aside__content .buttons > button{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px 1px rgba(53, 61, 63, 0.5);
+    margin-bottom: 30px;
+    background: #47C1AD;
+    color: #fff;
+    cursor: pointer;
 }
-.page__preview, .page__edit{
-    position: fixed;
-    left: 40px;
-    top: 20px;
+.page__aside__content .buttons > button:focus{
+    box-shadow: 0 1px 2px 1px rgba(53, 61, 63, 0.1);
+}
+.page__aside__content .buttons > .logout{
+    background: #FF7C77;
+    color: #fff;
+}
+
+/* mode */
+.page__mode{
+    position: absolute;
+    top: 40px;
+    right: 100px;
+    height: 64px;
+    flex-shrink: 0;
+}
+.page__mode button{
+    width: 66px;
+    height: 30px;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 1px rgba(53, 61, 63, 0.5);
+    cursor: pointer;
+}
+.page__mode .edit{
+    background: #47C1AD;
+}
+.page__mode .preview{
+    background: #ECD48A;
+    color: #3F5A65;
 }

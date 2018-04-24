@@ -1,0 +1,32 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+ul, ol{list-style: none;}
+a{text-decoration: none;}
+input{border: none; font: inherit;}
+*:focus {outline: none;}
+button{border-style: none;}
+h1,h2,h3,h4,h5{font-weight: normal;}
+body{font-family: "微软雅黑";}
+
+div[v-cloak]{
+    display: none;
+}
+.page{
+    height: 100%;
+    display: flex;
+    padding: 100px;
+    position: relative;
+    background: #5E7881;
+}
+.page .add,
+.page .remove{
+    cursor: pointer;
+}
+.page .edit{
+    cursor: pointer;
+    background: #47C1AD;
+    color: #fff; 
+    border-radius: 2px; 
+    padding: 0 2px;
+}
+
+

@@ -11,6 +11,65 @@
 }
 .page__signUp__form{
     background: #fff;
-    width: 400px;
-    height: 300px;
+    width: 360px;
+    height: 280px;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+.page__signUp__form h2{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+}
+.page__signUp__form .close{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    color: #666;
+    cursor: pointer;
+}
+.page__signUp__form .close > img{
+    width: 14px;
+}
+.page__signUp__form .row{
+    border-bottom: 1px #ddd solid;
+    margin-bottom: 20px;
+    line-height: 30px;
+    color: #333;
+    font-size: 16px;
+}
+.page__signUp__form .row .email{
+    width: 20px;
+    margin-bottom: -5px;
+    margin-left: -2px;
+}
+.page__signUp__form .row .password{
+    width: 17px;
+    margin-bottom: -3px;
+}
+.page__signUp__form .row input{
+    width: 294px;
+    font-size: 14px;
+    padding-left: 2px;
+}
+.page__signUp__form .submit{
+    background: #47C1AD;
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+    width: 320px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+.page__signUp__form .login{
+    font-size: 12px;
+    position: absolute;
+    right: 20px;
+    color: #999;
+    font-weight: 200;
+}
+.page__signUp__form .login span{
+    color: #47C1AD;
 }

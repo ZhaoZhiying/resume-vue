@@ -1,16 +1,37 @@
 .page__share{
-    min-width: 300px;
-    background: #ddd;
+    background: #fff;
+    width: 360px;
+    height: 160px;
+    padding: 20px;
+    border-radius: 5px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
+    box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5); 
+}
+.page__share h2{
+    font-size: 18px;
+    color: #555;
 }
 .page__share textarea{
+    border: none;
     width: 100%;
     min-height: 4em;
     word-break: break-all; 
     resize: none;
+    margin-top: 30px;
+    color: #333;
+}
+.page__share .close{
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    color: #666;
+    cursor: pointer;
+}
+.page__share .close img{
+    width: 14px;
 }

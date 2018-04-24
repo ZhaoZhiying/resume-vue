@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/resume.css">
+    <link rel="stylesheet" href="./css/page.css">
     <link rel="stylesheet" href="./css/page__main.css">
     <link rel="stylesheet" href="./css/page__aside.css">
     <link rel="stylesheet" href="./css/login.css">
@@ -15,148 +15,148 @@
     <link rel="stylesheet" href="./css/print.css" media="print">
     <link rel="stylesheet" href="./css/skinPiker.css">
 </head>
-<body class="default">
+<body>
     <div class="page" id="app">
         <aside class="page__aside" v-show="mode === 'edit'">
-                <div class="page__aside--upper">
-                        <button v-on:click="onClickSave">保存</button>
-                        <button v-on:click="shareVisible=true">分享</button>
-                        <button v-on:click="print">打印</button>
-                        <button v-on:click="skinPikerVisible = !skinPikerVisible">换肤</button>
+            <div class="page__aside__content">
+                <div class="buttons">
+                    <button v-on:click="onClickSave">保存</button>
+                    <button v-on:click="shareVisible=true">分享</button>
+                    <button v-on:click="print">打印</button>
+                    <button class="logout" v-on:click="onLogout" v-show="hasLogin()">登出</button>
                 </div>
-                <div class="page__aside--down">
-                        <button v-on:click="onLogout" v-show="hasLogin()">登出</button>
-                </div>
+            </div>
         </aside>
         <main class="page__main">
             <div class="page__main-headline">
-                    <h1>
-                        <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.name" v-on:edit="onEdit('name', $event)"></editable-span>
-                    </h1>
-                    <p class="job">
-                        <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.job" v-on:edit="onEdit('job', $event)"></editable-span>
-                    </p>
+                <h1>
+                    <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.name" v-on:edit="onEdit('name', $event)"></editable-input>
+                </h1>
+                <p>
+                    <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.job" v-on:edit="onEdit('job', $event)"></editable-input>
+                </p>
             </div>
             <div class="page__main-content">
                 <section class="page__main-content-left">
                     <div class="contact">
+                        <hr>
                         <h3>联系信息</h3>
-                        <ul>
+                        <hr>
+                        <ol>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.phone" v-on:edit="onEdit('phone', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.phone" v-on:edit="onEdit('phone', $event)"></editable-input>
                             </li>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.email" v-on:edit="onEdit('email', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.email" v-on:edit="onEdit('email', $event)"></editable-input>
                             </li>
-                        </ul>
+                        </ol>
                     </div>
                     <div class="intro">
+                        <hr>
                         <h3>个人简介</h3>
-                        <ul>
+                        <hr>
+                        <ol>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.gender" v-on:edit="onEdit('gender', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.gender" v-on:edit="onEdit('gender', $event)"></editable-input>
                             </li>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.birthday" v-on:edit="onEdit('birthday', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.birthday" v-on:edit="onEdit('birthday', $event)"></editable-input>
                             </li>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.birthplace" v-on:edit="onEdit('gender', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.birthplace" v-on:edit="onEdit('birthplace', $event)"></editable-input>
                             </li>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.education" v-on:edit="onEdit('birthday', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.education" v-on:edit="onEdit('education', $event)"></editable-input>
                             </li>
                             <li>
-                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.graduate" v-on:edit="onEdit('birthplace', $event)"></editable-span>
+                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="displayResume.graduate" v-on:edit="onEdit('graduate', $event)"></editable-input>
                             </li>
-                        </ul>
+                        </ol>
                     </div>
                     <div class="skills">
+                        <hr>
                         <h3>技能</h3>
-                        <ul>
+                        <hr>
+                        <ol>
                             <li v-for="skill,index in displayResume.skills">
                                 <div class="skill">
-                                    <editable-span v-bind:disabled="mode === 'preview'" class="name" v-bind:value="skill.name" v-on:edit="onEdit(`skills[${index}].name`, $event)"></editable-span>
+                                    <editable-input v-bind:disabled="mode === 'preview'" class="name" v-bind:value="skill.name" v-on:edit="onEdit(`skills[${index}].name`, $event)"></editable-input>
                                 </div>
                                 <div class="level">
-                                    <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="skill.level" v-on:edit="onEdit(`skills[${index}].level`, $event)"></editable-span>
+                                    <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="skill.level" v-on:edit="onEdit(`skills[${index}].level`, $event)"></editable-input>
                                 </div>
-                                <span class="remove" v-if="index>=4 && mode === 'edit'" v-on:click="removeSkill(index)">删除</span>
+                                <span class="remove" v-if="index>=4 && mode === 'edit'" v-on:click="removeSkill(index)"><img src="./img/icon/del.png" alt="img"></span>
                             </li>
                             <li v-if="mode === 'edit'">
-                                <span class="add" v-on:click="addSkill">添加</span>
+                                <div class="add" v-on:click="addSkill"><img src="./img/icon/add.png" alt="img">添加</div>
                             </li>
-                        </ul>
+                        </ol>
                     </div>
                 </section>
                 <section class="page__main-content-right">
                     <hr>
                     <div class="page__main-content-right__content">
                         <div class="assessments">
+                                <hr>
                                 <h3>自我评价</h3>
+                                <hr>
                                 <ol>
                                     <li v-for="assessment,index in displayResume.assessments">
                                         <p class="description">
-                                            <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="assessment.description" v-on:edit="onEdit(`assessments[${index}].description`, $event)"></editable-span>
+                                            <editable-textarea v-bind:disabled="mode === 'preview'" v-bind:value="assessment.description" v-on:edit="onEdit(`assessments[${index}].description`, $event)"></editable-textarea>
                                         </p>
-                                        <span class="remove" v-if="index>=4 && mode === 'edit'" v-on:click="removeAssessment(index)">删除</span>
+                                        <span class="remove" v-if="index>=4 && mode === 'edit'" v-on:click="removeAssessment(index)"><img src="./img/icon/del.png" alt="img"></span>
                                     </li>
                                     <li v-if="mode === 'edit'">
-                                        <span class="add" v-on:click="addAssessment">添加</span>
+                                        <div class="add" v-on:click="addAssessment"><img src="./img/icon/add.png" alt="img">添加</div>
                                     </li>
                                 </ol>
                         </div>
                         <div class="works">
+                                <hr>
                                 <h3>工作经验</h3>
+                                <hr>
                                 <ol>
                                     <li v-for="work,index in displayResume.works">
-                                        <h5 class="name">
-                                            <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="work.company" v-on:edit="onEdit(`works[${index}].company`, $event)"></editable-span>
+                                        <h5 class="company">
+                                            <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="work.company" v-on:edit="onEdit(`works[${index}].company`, $event)"></editable-input>
                                         </h5>
-                                        <div>
+                                        <div class="additional">
                                             <span class="job">
-                                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="work.job" v-on:edit="onEdit(`works[${index}].job`, $event)"></editable-span>
-                                            </span>
-                                            /
-                                            <span class="length">
-                                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="work.length" v-on:edit="onEdit(`works[${index}].length`, $event)"></editable-span>
+                                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="work.job" v-on:edit="onEdit(`works[${index}].job`, $event)"></editable-input>
                                             </span>
                                         </div>
                                         <p class="description">
-                                            <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="work.description" v-on:edit="onEdit(`works[${index}].description`, $event)"></editable-span>
+                                            <editable-textarea v-bind:disabled="mode === 'preview'" v-bind:value="work.description" v-on:edit="onEdit(`works[${index}].description`, $event)"></editable-textarea>
                                         </p>
-                                        <span class="remove" v-if="index>=4 && mode === 'edit'" v-on:click="removeWork(index)">删除</span>
+                                        <span class="remove" v-if="index>=2 && mode === 'edit'" v-on:click="removeWork(index)"><img src="./img/icon/del.png" alt="img"></span>
                                     </li>
                                     <li v-if="mode === 'edit'">
-                                        <span class="add" v-on:click="addWork">添加</span>
+                                        <div class="add" v-on:click="addWork"><img src="./img/icon/add.png" alt="img">添加</div>
                                     </li>
                                 </ol>
                         </div>
                         <div class="projects">
+                                <hr>
                                 <h3>项目经验</h3>
+                                <hr>
                                 <ol>
                                     <li v-for="project,index in displayResume.projects">
                                         <h5 class="name">
-                                            <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="project.name" v-on:edit="onEdit(`projects[${index}].name`, $event)"></editable-span>
-                                            <span class="link">
-                                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="project.link" v-on:edit="onEdit(`projects[${index}].link`, $event)"></editable-span>
-                                            </span>
+                                            <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="project.name" v-on:edit="onEdit(`projects[${index}].name`, $event)"></editable-input>
                                         </h5>
-                                        <div>
+                                        <div class="additional">
                                             <span class="company">
-                                                <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="project.company" v-on:edit="onEdit(`projects[${index}].company`, $event)"></editable-span>
-                                            </span>
-                                            /
-                                            <span class="length">
-                                                    <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="project.length" v-on:edit="onEdit(`projects[${index}].length`, $event)"></editable-span>
+                                                <editable-input v-bind:disabled="mode === 'preview'" v-bind:value="project.company" v-on:edit="onEdit(`projects[${index}].company`, $event)"></editable-input>
                                             </span>
                                         </div>
                                         <p class="description">
-                                            <editable-span v-bind:disabled="mode === 'preview'" v-bind:value="project.description" v-on:edit="onEdit(`projects[${index}].description`, $event)"></editable-span>
+                                            <editable-textarea v-bind:disabled="mode === 'preview'" v-bind:value="project.description" v-on:edit="onEdit(`projects[${index}].description`, $event)"></editable-textarea>
                                         </p>
-                                        <span class="remove" v-if="index>=4 && mode === 'edit'" v-on:click="removeProject(index)">删除</span>
+                                        <span class="remove" v-if="index>=2 && mode === 'edit'" v-on:click="removeProject(index)"><img src="./img/icon/del.png" alt="img"></span>
                                     </li>
                                     <li v-if="mode === 'edit'">
-                                        <span class="add" v-on:click="addProject">添加</span>
+                                        <div class="add" v-on:click="addProject"><img src="./img/icon/add.png" alt="img">添加</div>
                                     </li>
                                 </ol>
                         </div>
@@ -168,18 +168,18 @@
         <div class="page__login" v-show="loginVisible" v-cloak>
             <form class="page__login__form" v-on:submit.prevent="onLogin">
                 <h2>登录</h2>
-                <button type="button" v-on:click="loginVisible = false">关闭</button>
+                <button class="close" type="button" v-on:click="loginVisible = false"><img src="./img/icon/close.png" alt="img"></button>
                 <div class="row">
-                    <label>用户名</label>
+                    <label><img class="email" src="./img/icon/email.png" alt="img"></label>
                     <input type="text" v-model="login.email" autocomplete="off">
                 </div>
                 <div class="row">
-                    <label>密码</label>
+                    <label><img class="password" src="./img/icon/password.png" alt="img"></label>
                     <input type="password" v-model="login.password"  autocomplete="off">
                 </div>
                 <div class="actions">
-                    <button type="submit">提交</button>
-                    <a href="#" v-on:click="loginVisible = false; signUpVisible = true">注册</a>
+                    <button class="submit" type="submit">提交</button>
+                    <a class="signup" href="#" v-on:click="loginVisible = false; signUpVisible = true">还没有账号？<span>立即注册</span></a>
                 </div>
             </form>
         </div>
@@ -187,33 +187,31 @@
         <div class="page__signUp" v-show="signUpVisible" v-cloak>
             <form class="page__signUp__form" v-on:submit.prevent="onSignUp">
                 <h2>注册</h2>
-                <button type="button" v-on:click="signUpVisible = false">关闭</button>
+                <button class="close" type="button" v-on:click="signUpVisible = false"><img src="./img/icon/close.png" alt="img"></button>
                 <div class="row">
-                    <label>用户名</label>
+                    <label><img class="email" src="./img/icon/email.png" alt="img"></label>
                     <input type="text" v-model="signUp.email" autocomplete="off">
                 </div>
                 <div class="row">
-                    <label>密码</label>
+                    <label><img class="password" src="./img/icon/password.png" alt="img"></label>
                     <input type="password" v-model="signUp.password" autocomplete="off">
                 </div>
                 <div class="actions">
-                    <button type="submit">提交</button>
-                    <a href="#" v-on:click="loginVisible = true; signUpVisible = false">登录</a>
+                    <button class="submit" type="submit">提交</button>
+                    <a class="login" href="#" v-on:click="loginVisible = true; signUpVisible = false">已有账号<span>立即登录</span></a>
                 </div>
             </form>
         </div>
+        <!-- 模式切换 -->
+        <div class="page__mode">
+            <button class="edit" v-on:click="mode = 'edit'" v-if="mode === 'preview'">编辑模式</button>
+            <button class="preview" v-on:click="mode = 'preview'" v-if="mode === 'edit'">预览模式</button>
+        </div>
         <!-- 分享 -->
         <div class="page__share" v-show="shareVisible" v-cloak>
-            <h1>分享</h1>
+            <h2>分享</h2>
             <textarea readonly type="text" v-bind:value="shareLink"></textarea>
-        </div>
-        <!-- 模式切换 -->
-        <button class="page__edit" v-on:click="mode = 'edit'" v-if="mode === 'preview'">编辑模式</button>
-        <button class="page__preview" v-on:click="mode = 'preview'" v-if="mode === 'edit'">预览模式</button>
-        <!-- 换肤 -->
-        <div v-show="skinPikerVisible" class="skinPiker">
-            <button v-on:click="setTheme('default')">默认</button>
-            <button v-on:click="setTheme('dark')">暗黑</button>
+            <button class="close" type="button" v-on:click="shareVisible = false"><img src="./img/icon/close.png" alt="img"></button>
         </div>
     </div>
 
@@ -222,7 +220,8 @@
     <!-- Vue --> 
     <script src="./vendors/vue.min.js"></script>
     <script src="./js/av.js"></script>
-    <script src="./js/editable-span.js"></script>
+    <script src="./js/editable-textarea.js"></script>
+    <script src="./js/editable-input.js"></script>
     <script src="./js/app.js"></script>
 </body>
 </html>
